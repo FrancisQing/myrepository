@@ -7,6 +7,7 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 public interface ManagementMapper extends BaseMapper<Management> {
     /**
@@ -73,6 +74,16 @@ public interface ManagementMapper extends BaseMapper<Management> {
             @Param("sortField") String sortField,
             @Param("sortOrder") String sortOrder
     );
+
+    @Update("""
+    UPDATE yjx_repair_management
+    SET repair_price = #{repairPrice},
+        payment_status = #{paymentStatus},
+        repair_notes = #{repairNotes},
+        updated_at = NOW()
+    WHERE repair_id = #{repairId, jdbcType=INTEGER}
+""")
+    int updateById(Management management);
 
     @Delete("""
     DELETE FROM yjx_repair_management

@@ -5,6 +5,7 @@ import cn.kryex.phonerepair.entity.Repair;
 import cn.kryex.phonerepair.entity.User;
 import cn.kryex.phonerepair.entity.dto.ManagementCreateDTO;
 import cn.kryex.phonerepair.entity.dto.ManagementQueryModule;
+import cn.kryex.phonerepair.entity.dto.ManagementUpdateDTO;
 import cn.kryex.phonerepair.mapper.ManagementMapper;
 import cn.kryex.phonerepair.mapper.RepairMapper;
 import cn.kryex.phonerepair.mapper.UserMapper;
@@ -17,10 +18,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Map;
 
 @Service
 public class ManagementServiceImpl extends ServiceImpl<ManagementMapper, Management> implements ManagementService {
+    private static final List<String> VALID_PAYMENT_STATUS = Arrays.asList("待支付", "支付中", "支付完成", "支付异常");
     @Autowired
     private ManagementMapper managementMapper;
 
@@ -78,6 +82,42 @@ public class ManagementServiceImpl extends ServiceImpl<ManagementMapper, Managem
         management.setUpdatedAt(LocalDateTime.now());
         return this.save(management);
     }
+
+    @Override
+    public boolean updateRepairManagement(ManagementUpdateDTO managementUpdateDTO) {
+        // 非空校验
+        if (managementUpdateDTO.getTechnicianId() == null){
+            throw new RuntimeException("维修人员不能为空");
+        }
+        if (managementUpdateDTO.getRepairId() == null) {
+            throw new RuntimeException("维修ID不能为空");
+        }
+        if (managementUpdateDTO.getRepairNotes() == null){
+            throw new RuntimeException("维修描述不能为空");
+        }
+        if (managementUpdateDTO.getRepairPrice() == null){
+            throw new RuntimeException("维修价格不能为空");
+        }
+        // 检查记录是否存在
+        if (!VALID_PAYMENT_STATUS.contains(managementUpdateDTO.getPaymentStatus())) {
+            throw new RuntimeException("无效的支付状态");
+        }
+        // 检查记录是否存在
+        User technician = userMapper.selectByUserId(managementUpdateDTO.getTechnicianId());
+        if (technician == null) {
+            throw new RuntimeException("维修人员不存在");
+        }
+        // 更新记录
+        Management management = new Management();
+        management.setRepairId(managementUpdateDTO.getRepairId());
+        management.setRepairPrice(String.valueOf(managementUpdateDTO.getRepairPrice()));
+        management.setPaymentStatus(managementUpdateDTO.getPaymentStatus());
+        management.setRepairNotes(managementUpdateDTO.getRepairNotes());
+        management.setTechnicianId(String.valueOf(managementUpdateDTO.getTechnicianId()));
+        management.setUpdatedAt(LocalDateTime.now());
+        return managementMapper.updateById(management) > 0;
+    }
+
 
     @Override
     public boolean deleteManagement(Integer repairId, Integer userId, String userPasswd) {

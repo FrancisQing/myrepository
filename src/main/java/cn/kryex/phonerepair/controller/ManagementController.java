@@ -3,6 +3,7 @@ package cn.kryex.phonerepair.controller;
 import cn.kryex.phonerepair.entity.common.Result;
 import cn.kryex.phonerepair.entity.dto.ManagementCreateDTO;
 import cn.kryex.phonerepair.entity.dto.ManagementQueryModule;
+import cn.kryex.phonerepair.entity.dto.ManagementUpdateDTO;
 import cn.kryex.phonerepair.service.ManagementService;
 import org.springframework.web.bind.annotation.*;
 
@@ -32,8 +33,18 @@ public class ManagementController {
         }
     }
 
+    @PostMapping("/updateRepairManagement")
+    public Result<String> updateRepairManagement(@RequestBody ManagementUpdateDTO managementUpdateDTO) {
+        boolean updateResult = managementService.updateRepairManagement(managementUpdateDTO);
+        if (updateResult) {
+            return Result.success("Management record updated successfully");
+        } else {
+            return Result.fail("Failed to update management record", 500);
+        }
+    }
 
-                                                 @PostMapping("/deleteRepairManagement")
+
+    @PostMapping("/deleteRepairManagement")
     public Result<String> deleteRepairManagement(@RequestParam ("repairId") Integer repairId,
                                                  @RequestParam ("userId") Integer userId,
                                                  @RequestParam ("userPasswd") String userPasswd){
