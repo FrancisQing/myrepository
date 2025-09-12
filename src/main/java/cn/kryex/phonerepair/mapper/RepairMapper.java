@@ -50,6 +50,9 @@ public interface RepairMapper extends BaseMapper<Repair> {
                                            @Param("sortField") String sortField,       // 排序字段
                                            @Param("sortOrder") String sortOrder );       // 排序方向);
 
+    @Select("SELECT * FROM yjx_repair_request WHERE request_id = #{repairId}")
+    Repair selectById(@Param("repairId") Integer repairId);
+
     @Delete("""
     DELETE FROM yjx_repair_request
     WHERE request_id = #{repairId} 
