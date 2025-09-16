@@ -1,6 +1,6 @@
 package cn.kryex.phonerepair;
 
-import cn.kryex.phonerepair.entity.User;
+import cn.kryex.phonerepair.entity.po.User;
 import cn.kryex.phonerepair.service.UserService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

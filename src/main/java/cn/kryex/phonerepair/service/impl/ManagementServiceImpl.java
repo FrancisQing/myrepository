@@ -1,8 +1,8 @@
 package cn.kryex.phonerepair.service.impl;
 
-import cn.kryex.phonerepair.entity.Management;
-import cn.kryex.phonerepair.entity.Repair;
-import cn.kryex.phonerepair.entity.User;
+import cn.kryex.phonerepair.entity.po.Management;
+import cn.kryex.phonerepair.entity.po.Repair;
+import cn.kryex.phonerepair.entity.po.User;
 import cn.kryex.phonerepair.entity.dto.ManagementCreateDTO;
 import cn.kryex.phonerepair.entity.dto.ManagementQueryModule;
 import cn.kryex.phonerepair.entity.dto.ManagementUpdateDTO;
@@ -10,7 +10,6 @@ import cn.kryex.phonerepair.mapper.ManagementMapper;
 import cn.kryex.phonerepair.mapper.RepairMapper;
 import cn.kryex.phonerepair.mapper.UserMapper;
 import cn.kryex.phonerepair.service.ManagementService;
-import cn.kryex.phonerepair.utils.Md5Password;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;

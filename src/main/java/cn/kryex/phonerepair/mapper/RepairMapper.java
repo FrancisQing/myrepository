@@ -4,7 +4,7 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 //import com.github.pagehelper.Page;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page; // 使用MP的Page
-import cn.kryex.phonerepair.entity.Repair;
+import cn.kryex.phonerepair.entity.po.Repair;
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;

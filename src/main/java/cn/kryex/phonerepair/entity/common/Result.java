@@ -19,6 +19,15 @@ public class Result<T> {
         return result;
     }
 
+    public static <T> Result<T> success(String msg, T data) {
+        Result<T> result = new Result<>();
+        result.setCode(200);
+        result.setMsg(msg);
+        result.setData(data);
+        result.setTimestamp(System.currentTimeMillis());
+        return result;
+    }
+
     // 失败响应：自定义错误信息+状态码
     public static <T> Result<T> fail(String msg, Integer code) {
         Result<T> result = new Result<>();

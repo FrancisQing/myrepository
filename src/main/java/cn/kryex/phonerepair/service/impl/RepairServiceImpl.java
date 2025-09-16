@@ -1,7 +1,7 @@
 package cn.kryex.phonerepair.service.impl;
 
-import cn.kryex.phonerepair.entity.Repair;
-import cn.kryex.phonerepair.entity.User;
+import cn.kryex.phonerepair.entity.po.Repair;
+import cn.kryex.phonerepair.entity.po.User;
 import cn.kryex.phonerepair.entity.common.Result;
 import cn.kryex.phonerepair.entity.dto.ReceptionistVO;
 import cn.kryex.phonerepair.entity.dto.RepairQueryModule;

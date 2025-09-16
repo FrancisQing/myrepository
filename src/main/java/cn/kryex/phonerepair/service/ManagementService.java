@@ -1,6 +1,6 @@
 package cn.kryex.phonerepair.service;
 
-import cn.kryex.phonerepair.entity.Management;
+import cn.kryex.phonerepair.entity.po.Management;
 import cn.kryex.phonerepair.entity.dto.ManagementCreateDTO;
 import cn.kryex.phonerepair.entity.dto.ManagementQueryModule;
 import cn.kryex.phonerepair.entity.dto.ManagementUpdateDTO;

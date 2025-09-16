@@ -1,4 +1,4 @@
-package cn.kryex.phonerepair.entity;
+package cn.kryex.phonerepair.entity.po;
 
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;

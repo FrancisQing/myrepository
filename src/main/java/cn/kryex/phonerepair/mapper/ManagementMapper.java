@@ -1,6 +1,6 @@
 package cn.kryex.phonerepair.mapper;
 
-import cn.kryex.phonerepair.entity.Management;
+import cn.kryex.phonerepair.entity.po.Management;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
