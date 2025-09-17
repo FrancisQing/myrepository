@@ -16,17 +16,5 @@
         ORDER BY ${orderBy}
     </select>
 
-    <update id="updateById" parameterType="cn.kryex.phonerepair.entity.po.User">
-        UPDATE yjx_user
-        SET user_name = #{userName},
-            user_email = #{userEmail},
-            role_id = #{roleId},
-            user_bio = #{userBio},
-            user_phone = #{userPhone}
-        WHERE user_id = #{userId}
-    </update>
 
-    <delete id="deleteById" parameterType="int">
-        DELETE FROM yjx_user WHERE user_id = #{userId}
-    </delete>
 </mapper>
